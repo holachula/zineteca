@@ -1,0 +1,32 @@
+<h2>Agregar Autor</h2>
+
+<form (ngSubmit)="guardar()">
+
+  <label>Nombre</label>
+  <input type="text" [(ngModel)]="autor.nombre" name="nombre" required>
+
+  <label>Estado</label>
+  <input type="text" [(ngModel)]="autor.estado" name="estado" required>
+
+  <label>Biografía</label>
+  <textarea [(ngModel)]="autor.bio" name="bio"></textarea>
+
+  <h3>Comics del Autor</h3>
+
+  <div *ngFor="let comic of comics; let i = index">
+    <label>Título</label>
+    <input type="text" [(ngModel)]="comic.titulo" name="titulo{{i}}" required>
+
+    <label>Descripción</label>
+    <textarea [(ngModel)]="comic.descripcion" name="desc{{i}}"></textarea>
+
+    <button type="button" (click)="eliminarComic(i)" *ngIf="comics.length > 1">
+      Eliminar
+    </button>
+  </div>
+
+  <button type="button" (click)="agregarComic()">+ Agregar otro comic</button>
+
+  <br><br>
+  <button type="submit">Guardar Autor</button>
+</form>

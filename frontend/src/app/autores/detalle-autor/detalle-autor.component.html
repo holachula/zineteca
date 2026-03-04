@@ -1,0 +1,56 @@
+<div *ngIf="cargando" class="text-center p-5">
+  Cargando información del autor...
+</div>
+
+<div *ngIf="!cargando && autor" class="autor-detalle">
+
+  <h1>{{ autor.nombre }}</h1>
+
+  <!-- Foto del autor (opcional si existe en la base) -->
+  <div *ngIf="autor.foto_url">
+    <img [src]="autor.foto_url" alt="{{ autor.nombre }}" style="max-width:200px;">
+  </div>
+
+  <p>
+    <strong>Estado:</strong> {{ autor.estado }}
+  </p>
+
+  <p>
+    <strong>Biografía:</strong><br>
+    {{ autor.bio || 'Este autor aún no tiene biografía.' }}
+  </p>
+
+  <hr>
+
+  <h2>Cómics del Autor</h2>
+
+  <div *ngIf="autor.comics?.length; else noComics">
+
+    <div *ngFor="let comic of autor.comics" class="comic-item">
+      <h3>
+        <a [routerLink]="['/comic', comic.slug]">
+          {{ comic.titulo }}
+        </a>
+      </h3>
+
+      <div *ngIf="comic.generos?.length">
+        <strong>Géneros:</strong>
+        {{ getGeneros(comic) }}
+
+      </div>
+
+      <div *ngIf="comic.tematicas?.length">
+        <strong>Temáticas:</strong>
+       {{ getTematicas(comic) }}
+      </div>
+
+      <hr>
+    </div>
+
+  </div>
+
+  <ng-template #noComics>
+    <p>Este autor todavía no tiene cómics registrados.</p>
+  </ng-template>
+
+</div>

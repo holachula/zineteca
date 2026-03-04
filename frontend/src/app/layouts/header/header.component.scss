@@ -1,0 +1,25 @@
+.navbar {
+  background-color: #ffffff;
+  padding: 1rem;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+
+    li a {
+      color: rgb(134, 134, 134);
+      text-decoration: none;
+        &.active {
+    background-color: #fff;
+      text-decoration: underline;
+    color: #000000;
+    border-radius: 4px;
+  }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

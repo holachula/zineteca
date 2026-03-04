@@ -1,0 +1,144 @@
+<!--
+|--------------------------------------------------------------------------
+| File: src/app/home/home.component.html
+|--------------------------------------------------------------------------
+| Vista principal del Home
+|
+| Funcionalidades:
+| - Tabs: Comics / Autores
+| - Filtros dinámicos con selects:
+|   - Género, Temática, Año, Estado
+| - Botón de randomizar comics
+| - Mostrar tags de filtros activos con botón de eliminar individual
+| - Botón para limpiar todos los filtros
+| - Renderizado de resultados de Comics o Autores
+|--------------------------------------------------------------------------
+-->
+
+<div class="home-container">
+
+  <h1>Zineteca Nacional</h1>
+
+  <!-- ==========================
+       TABS / PILLS
+       ========================== -->
+  <div class="tabs">
+    <button 
+      [class.active]="activeTab === 'comics'" 
+      (click)="changeTab('comics')">
+      Comics
+    </button>
+
+    <button 
+      [class.active]="activeTab === 'autores'" 
+      (click)="changeTab('autores')">
+      Autores
+    </button>
+  </div>
+
+  <!-- ==========================
+       FILTROS
+       ========================== -->
+  <div class="filters">
+
+    <!-- Botón Randomizar (solo comics) -->
+    <button *ngIf="activeTab === 'comics'" (click)="randomize()">
+      Comics al Azar ¡¡
+    </button>
+
+    <!-- SELECT GENERO -->
+    <select [(ngModel)]="filters.genero" *ngIf="activeTab === 'comics'">
+      <option value="">Todos los géneros</option>
+      <option *ngFor="let g of generos" [value]="g.nombre">{{ g.nombre }}</option>
+    </select>
+
+    <!-- SELECT TEMATICA -->
+    <select [(ngModel)]="filters.tematica" *ngIf="activeTab === 'comics'">
+      <option value="">Todas las temáticas</option>
+      <option *ngFor="let t of tematicas" [value]="t.nombre">{{ t.nombre }}</option>
+    </select>
+
+    <!-- SELECT AÑO -->
+    <select [(ngModel)]="filters.anio" *ngIf="activeTab === 'comics'">
+      <option value="">Todos los años</option>
+      <option *ngFor="let a of anios" [value]="a">{{ a }}</option>
+    </select>
+
+    <!-- SELECT ESTADO (para comics y autores) -->
+    <select [(ngModel)]="filters.estado" *ngIf="activeTab === 'comics' || activeTab === 'autores'">
+      <option value="">Todos los estados</option>
+      <option *ngFor="let e of estados" [value]="e">{{ e }}</option>
+    </select>
+
+    <!-- Botones de aplicar filtros -->
+    <button *ngIf="activeTab === 'comics'" (click)="applyComicFilters()">
+      Filtrar Comics
+    </button>
+
+    <button *ngIf="activeTab === 'autores'" (click)="applyAutorFilters()">
+      Filtrar Autores
+    </button>
+
+    <!-- Botón limpiar todos los filtros -->
+    <button (click)="clearFilters()">
+      Limpiar Filtros
+    </button>
+
+  </div>
+
+  <!-- ==========================
+       TAGS DE FILTROS ACTIVOS
+       ========================== -->
+  <div class="active-filters">
+    <!-- Iteramos sobre cada key de filters -->
+    <!-- ==========================
+     TAGS DE FILTROS ACTIVOS
+     ========================== -->
+    <ng-container *ngFor="let key of activeFilterKeys">
+      <span class="filter-tag">
+        {{ filters[key] }}
+        <button (click)="removeFilter(key)">x</button>
+      </span>
+    </ng-container>
+  </div>
+
+  <!-- ==========================
+       RESULTADOS COMICS
+       ========================== -->
+    <div *ngIf="activeTab === 'comics'" class="grid">
+      <a
+        *ngFor="let comic of comics"
+        class="card"
+        [routerLink]="['/comic', comic.slug]"
+      >
+
+        <!-- Portada -->
+        <img
+          *ngIf="comic.portada_url"
+          [src]="comic.portada_url"
+          [alt]="comic.titulo"
+          class="cover"
+        />
+
+        <!-- Fallback si no hay portada -->
+        <div *ngIf="!comic.portada_url" class="no-cover">
+          Sin portada
+        </div>
+
+        <h3>{{ comic.titulo }}</h3>
+        <p>{{ comic.descripcion }}</p>
+        <small>{{ comic.anio }}</small>
+
+      </a>
+    </div>
+  <!-- ==========================
+       RESULTADOS AUTORES
+       ========================== -->
+  <div *ngIf="activeTab === 'autores'" class="grid">
+    <div *ngFor="let autor of autores" class="card">
+      <h3>{{ autor.name }}</h3>
+      <p>{{ autor.estado }}</p>
+    </div>
+  </div>
+
+</div>

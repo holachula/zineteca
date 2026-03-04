@@ -1,0 +1,15 @@
+<div class="lista-autores">
+
+  <h2>Autores</h2>
+
+  <div *ngIf="cargando">Cargando autores...</div>
+
+    <ul>
+        <li *ngFor="let autor of autores">
+            <a [routerLink]="['/autor', autor.slug]">
+            {{ autor.nombre }} ({{ autor.estado }})
+            </a>
+        </li>
+    </ul>
+    <a routerLink="/">← Volver</a>
+</div>

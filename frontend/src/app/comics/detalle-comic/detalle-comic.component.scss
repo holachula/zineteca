@@ -1,0 +1,56 @@
+// src/app/comics/detalle-comic/detalle-comic.component.scss
+
+/* Contenedor general */
+.comic-detalle {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Título centrado */
+.titulo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Portada */
+.portada-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.portada {
+  max-width: 250px;
+  border-radius: 8px;
+}
+
+/* Badges de género y temática */
+.badge {
+  display: inline-block;
+  background: #eee;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+/* ============================= */
+/* 🔥 LECTOR VERTICAL */
+/* ============================= */
+
+.lector-vertical {
+  background: #111; /* Fondo oscuro tipo lector */
+  padding: 20px 0;
+}
+
+.pagina-container {
+  text-align: center;
+  margin-bottom: 0; /* Sin espacio para efecto continuo */
+}
+
+.pagina-img {
+  width: 100%;
+  max-width: 800px;
+  display: block;
+  margin: 0 auto;
+}

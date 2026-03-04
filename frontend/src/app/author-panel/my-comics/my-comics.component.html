@@ -1,0 +1,32 @@
+<!-- frontend\src\app\author-panel\my-comics\my-comics.component.html -->
+<div class="panel-header">
+  <h2>Mis Cómics</h2>
+  <button (click)="addComic()" class="btn btn-primary">Agregar cómic</button>
+</div>
+
+<div class="comics-grid">
+  <div class="card" *ngFor="let comic of comics">
+    
+    <!-- Portada -->
+    <img *ngIf="comic.portada_url" [src]="comic.portada_url" [alt]="comic.titulo" class="cover" />
+    <div *ngIf="!comic.portada_url" class="no-cover">Sin portada</div>
+
+    <h3>{{ comic.titulo }}</h3>
+    <p>{{ comic.descripcion }}</p>
+    <small>{{ comic.anio }}</small>
+
+    <!-- Botones -->
+    <div class="card-actions">
+      <!-- frontend/src/app/author-panel/my-comics/my-comics.component.html -->
+      <button class="btn btn-secondary" 
+              [routerLink]="['/panel/autor/comics', comic.slug]">
+        Vista previa
+      </button>
+      <button class="btn btn-warning" (click)="editComic(comic.slug)">Editar</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #notLoggedIn>
+  <p>No estás logueado. Por favor <a [routerLink]="['/login']">inicia sesión</a>.</p>
+</ng-template>

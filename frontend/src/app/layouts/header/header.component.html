@@ -1,0 +1,17 @@
+<!-- frontend/src/app/layouts/header/header.component.html -->
+<nav class="navbar">
+  <ul>
+    <li><a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a></li>
+    <li><a [routerLink]="['/autores']" routerLinkActive="active">Autores</a></li>
+    <li><a [routerLink]="['/comics']" routerLinkActive="active">Cómics</a></li>
+  </ul>
+
+  <div class="user-info" *ngIf="isLoggedIn(); else loginLink">
+    Hola, {{ auth.getUser()?.name }}
+    <button (click)="logout()">Logout</button>
+  </div>
+
+  <ng-template #loginLink>
+    <a [routerLink]="['/login']">Login</a>
+  </ng-template>
+</nav>

@@ -1,0 +1,16 @@
+<!-- listado-comics.component.html -->
+<div class="lista-comics">
+
+  <h2>Comics</h2>
+
+  <div *ngIf="cargando">Cargando Comics...</div>
+
+    <ul>
+        <li *ngFor="let comic of comics">
+            <a [routerLink]="['/comic', comic.slug]">
+            {{ comic.titulo }} ({{ comic.titulo }})
+            </a>
+        </li>
+    </ul>
+      <a routerLink="/">← Volver</a>
+</div>
