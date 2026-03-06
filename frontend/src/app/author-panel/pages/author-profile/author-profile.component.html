@@ -1,0 +1,111 @@
+<!-- author-profile.component.html -->
+<!-- author-profile.component.html -->
+
+<h2>Mi Perfil</h2>
+
+<form (ngSubmit)="save()">
+
+  <!-- FOTO DE PERFIL -->
+
+  <h3>Foto de perfil</h3>
+
+  <!-- Preview de la imagen actual o seleccionada -->
+  <div *ngIf="previewUrl">
+
+    <!-- 
+    Muestra la imagen seleccionada antes de subirla.
+    previewUrl se genera cuando el usuario selecciona un archivo.
+    -->
+
+    <img
+      [src]="previewUrl"
+      alt="Preview foto perfil"
+      style="width:120px;height:120px;border-radius:50%;object-fit:cover"
+    >
+
+  </div>
+
+  <br>
+
+  <!-- Input para seleccionar imagen -->
+
+  <input
+    type="file"
+    accept="image/*"
+    (change)="onFileSelected($event)"
+  >
+
+  <br><br>
+
+  <!-- Nombre público -->
+
+  <label>
+    Nombre público
+    <input
+      type="text"
+      [(ngModel)]="author.nombre"
+      name="nombre"
+      required
+    />
+  </label>
+
+  <br><br>
+
+  <!-- Bio -->
+
+  <label>
+    Bio
+    <textarea
+      [(ngModel)]="author.bio"
+      name="bio">
+    </textarea>
+  </label>
+
+  <br><br>
+
+  <!-- Instagram -->
+
+  <label>
+    Instagram
+    <input
+      type="text"
+      [(ngModel)]="author.instagram"
+      name="instagram"
+    />
+  </label>
+
+  <br><br>
+
+  <!-- Twitter -->
+
+  <label>
+    Twitter
+    <input
+      type="text"
+      [(ngModel)]="author.twitter"
+      name="twitter"
+    />
+  </label>
+
+  <br><br>
+
+  <!-- Website -->
+
+  <label>
+    Website
+    <input
+      type="text"
+      [(ngModel)]="author.website"
+      name="website"
+    />
+  </label>
+
+  <br><br>
+
+  <button type="submit" [disabled]="saving">
+
+    {{ saving ? 'Guardando...' : 'Guardar cambios' }}
+
+  </button>
+
+</form>

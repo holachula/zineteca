@@ -10,7 +10,20 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminAutorController;
 use App\Http\Controllers\AuthorProfileController;
 use App\Http\Controllers\HomeController;
-
+/*
+|--------------------------------------------------------------------------
+| AUTHOR PROFILE ROUTES
+|--------------------------------------------------------------------------
+|
+| Estas rutas permiten que el autor autenticado
+| consulte y actualice su perfil.
+|
+| Se protegen con:
+|
+| auth:sanctum → verifica que el usuario tenga token válido
+| author       → verifica que el usuario tenga rol de autor
+|
+*/
 /*
 |-------------------------------------------------------------------------- 
 | API INFO

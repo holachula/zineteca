@@ -1,15 +1,47 @@
+<!-- lista-autores.component.html -->
 <div class="lista-autores">
 
   <h2>Autores</h2>
 
   <div *ngIf="cargando">Cargando autores...</div>
 
-    <ul>
-        <li *ngFor="let autor of autores">
-            <a [routerLink]="['/autor', autor.slug]">
-            {{ autor.nombre }} ({{ autor.estado }})
-            </a>
-        </li>
-    </ul>
-    <a routerLink="/">← Volver</a>
+  <!-- Grid de cards -->
+  <div class="autores-grid">
+
+    <div class="autor-card" *ngFor="let autor of autores">
+
+      <a class="autor-link" [routerLink]="['/autor', autor.slug]">
+
+        <!-- Imagen de perfil -->
+        <div class="autor-imagen">
+          <img 
+            *ngIf="autor.foto_perfil" 
+            [src]="autor.foto_perfil" 
+            [alt]="autor.nombre"
+          />
+
+          <!-- Imagen fallback si no hay foto -->
+          <img 
+            *ngIf="!autor.foto_perfil" 
+            src="/assets/default-avatar.png" 
+            alt="Autor"
+          />
+        </div>
+
+        <h3 class="autor-nombre">
+          {{ autor.nombre }}
+        </h3>
+
+        <p class="autor-estado">
+          Estado: {{ autor.estado }}
+        </p>
+
+      </a>
+
+    </div>
+
+  </div>
+
+  <a class="volver" routerLink="/">← Volver</a>
+
 </div>

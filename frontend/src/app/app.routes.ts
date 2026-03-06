@@ -23,10 +23,7 @@ import { DetalleComicComponent } from './comics/detalle-comic/detalle-comic.comp
 import { BuscarComponent } from './buscar/buscar.component';
 
 // Panel de autor
-import { MyComicsComponent } from './author-panel/my-comics/my-comics.component';
-// src/app/app.routes.ts
-import { DetalleComicAutorComponent } from './author-panel/detalle-comic-author/detalle-comic-author.component';
-import { ComicFormComponent } from './author-panel/comic-form/comic-form.component';
+import { AuthorPanelComponent } from './author-panel/author-panel.component';
 
 // Autenticación
 import { LoginComponent } from './auth/login/login.component';
@@ -105,37 +102,64 @@ export const routes: Routes = [
   // =====================
 
   // Lista de comics del autor autenticado
-  // URL: /panel/autor/comics
-  {
-    path: 'panel/autor/comics',
-    component: MyComicsComponent,
-    canActivate: [authGuard, roleGuard],
-    data: { role: 'author' }
-  },
-// Detalle de comic para autores
-{
-  path: 'panel/autor/comics/:slug',
-  component: DetalleComicAutorComponent,
-  canActivate: [authGuard, roleGuard],
-  data: { role: 'author' }
-},
-  // Crear nuevo comic
-  // URL: /panel/autor/comics/new
-  {
-    path: 'panel/autor/comics/new',
-    component: ComicFormComponent,
-    canActivate: [authGuard, roleGuard],
-    data: { role: 'author' }
-  },
+  /*
+RUTAS DEL PANEL DE AUTOR
 
-  // Editar comic por ID
-  // URL: /panel/autor/comics/edit/5
-  {
-    path: 'panel/autor/comics/:slug/editar',
-    component: ComicFormComponent,
-    canActivate: [authGuard, roleGuard],
-    data: { role: 'author' }
-  },
+Usamos AuthorPanelComponent como layout
+y dentro definimos páginas hijas con children.
+*/
+
+{
+  path: 'panel/autor',
+
+  component: AuthorPanelComponent,
+
+  canActivate: [authGuard, roleGuard],
+  data: { role: 'author' },
+
+  children: [
+
+    // ======================
+    // LISTA DE COMICS
+    // ======================
+
+    {
+      path: 'comics',
+      loadComponent: () =>
+        import('./author-panel/pages/my-comics/my-comics.component')
+          .then(m => m.MyComicsComponent)
+    },
+
+    // ======================
+    // CREAR COMIC
+    // ======================
+
+    {
+      path: 'comics/new',
+      loadComponent: () =>
+        import('./author-panel/pages/comic-form/comic-form.component')
+          .then(m => m.ComicFormComponent)
+    },
+
+    // ======================
+    // VISTA PREVIA AUTOR
+    // ======================
+
+    {
+      path: 'comics/:slug',
+      loadComponent: () =>
+        import('./author-panel/pages/detalle-comic-author/detalle-comic-author.component')
+          .then(m => m.DetalleComicAutorComponent)
+    },
+      {
+    path: 'perfil',
+    loadComponent: () =>
+      import('./author-panel/pages/author-profile/author-profile.component')
+        .then(m => m.AuthorProfileComponent)
+  }
+
+  ]
+},
 
 
   // =====================

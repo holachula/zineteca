@@ -1,0 +1,51 @@
+<!--
+LAYOUT DEL PANEL DE AUTOR
+
+Contiene:
+
+- Sidebar con navegación
+- Área de contenido
+- router-outlet donde Angular carga las páginas
+-->
+
+<div class="author-panel">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <h2>Panel Autor</h2>
+
+    <nav>
+
+      <!-- Lista de comics -->
+      <a routerLink="/panel/autor/comics">
+        Mis cómics
+      </a>
+
+      <!-- Crear comic -->
+      <a routerLink="/panel/autor/comics/new">
+        Crear cómic
+      </a>
+
+      <!-- Perfil del autor -->
+      <a routerLink="/panel/autor/perfil">
+        Mi perfil
+      </a>
+
+    </nav>
+
+  </aside>
+
+  <!-- CONTENIDO -->
+  <main class="panel-content">
+
+    <!--
+    router-outlet es el marcador dinámico
+    donde Angular carga las páginas hijas.
+    -->
+
+    <router-outlet></router-outlet>
+
+  </main>
+
+</div>

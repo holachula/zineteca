@@ -1,5 +1,5 @@
 <?php
-
+// AdminMiddleware.php
 namespace App\Http\Middleware;
 
 use Closure;

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ComicsService } from '../../services/comics.service';
+import { ComicsService } from '../../../services/comics.service';
 
 @Component({
   selector: 'app-comic-form',

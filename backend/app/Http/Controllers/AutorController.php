@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Autor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AutorController extends Controller
 {
@@ -15,6 +17,8 @@ class AutorController extends Controller
     {
         return Autor::orderBy('nombre')->get();
     }
+
+
 
     /**
      * GET /api/autores/{slug}

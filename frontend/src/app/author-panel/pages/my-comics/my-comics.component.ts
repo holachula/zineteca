@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router'; // <-- Router para navegación
-import { ComicsService } from '../../services/comics.service';
-import { AuthService } from '../../auth/auth.service';
+import { ComicsService } from '../../../services/comics.service';
+import { AuthService } from '../../../auth/auth.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({

@@ -9,8 +9,10 @@
   <div class="user-info" *ngIf="isLoggedIn(); else loginLink">
     Hola, {{ auth.getUser()?.name }}
     <button (click)="logout()">Logout</button>
-  </div>
+    <button [routerLink]="['/panel/autor/comics']" class="btn btn-primary">Panel de autor</button>
 
+  </div>
+  
   <ng-template #loginLink>
     <a [routerLink]="['/login']">Login</a>
   </ng-template>

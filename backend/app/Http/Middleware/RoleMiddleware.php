@@ -1,5 +1,5 @@
 <?php
-
+// RolerMiddleware.php
 namespace App\Http\Middleware;
 
 use Closure;

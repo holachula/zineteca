@@ -1,5 +1,5 @@
 <?php
-
+// backend/app/Models/Autor.php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -12,13 +12,19 @@ class Autor extends Model
     protected $table = 'autores';
 
     // Campos REALES de la tabla autores
-    protected $fillable = [
-        'nombre',
-        'slug',
-        'estado',
-        'bio',
-        'user_id',
-    ];
+        protected $fillable = [
+            'nombre',
+            'slug',
+            'estado',
+            'bio',
+            'user_id',
+
+            // Imagen tipo foto de perfil
+            'foto_perfil',
+
+            // Imagen lateral ilustrativa
+            'imagen_lateral',
+        ];
 
     // Generar slug automáticamente
     protected static function boot()

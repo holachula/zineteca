@@ -3,7 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute } from '@angular/router';
-import { ComicsService } from '../../services/comics.service';
+import { ComicsService } from '../../../services/comics.service';
 
 @Component({
   selector: 'detalle-comic-autor',
