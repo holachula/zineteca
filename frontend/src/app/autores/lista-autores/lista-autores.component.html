@@ -1,3 +1,4 @@
+<!-- frontend/src/app/author-panel/pages/author-profile/lista-autores.component.html  -->
 <!-- lista-autores.component.html -->
 <div class="lista-autores">
 
@@ -16,7 +17,7 @@
         <div class="autor-imagen">
           <img 
             *ngIf="autor.foto_perfil" 
-            [src]="autor.foto_perfil" 
+            [src]="backendUrl +  autor.foto_perfil"
             [alt]="autor.nombre"
           />
 

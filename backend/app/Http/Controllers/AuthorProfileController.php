@@ -133,10 +133,16 @@ public function update(Request $request)
 
         'estado' => 'sometimes|required|string|max:255',
 
-        // Imagen de perfil opcional
+        /*
+        Imagen de perfil del autor.
+
+        image  → valida que el archivo sea imagen
+        mimes  → tipos permitidos
+        max    → tamaño máximo en KB (2048 = 2MB)
+        */
         'foto_perfil' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
 
-    ]);
+            ]);
 
 
     /*

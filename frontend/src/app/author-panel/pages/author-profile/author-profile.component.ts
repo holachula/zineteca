@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthorsService } from '../../../services/authors.service';
 import { Author } from '../../../models/author.model';
 
+import { environment } from '../../../../environments/environment';
+
 /*
 AUTHOR PROFILE COMPONENT
 
@@ -161,5 +163,6 @@ export class AuthorProfileComponent implements OnInit {
     });
 
   }
+   backendUrl = environment.backendUrl;
 
 }

@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 // Servicio que se encarga de comunicarse con el backend para obtener autores
 import { AutoresService } from '../../services/autores.service';
 
+import { environment } from '../../../environments/environment';
 /**
  * Decorador @Component
  * Define la configuración del componente:
@@ -71,4 +72,5 @@ export class ListaAutoresComponent implements OnInit {
 
     });
   }
+  backendUrl = environment.backendUrl;
 }

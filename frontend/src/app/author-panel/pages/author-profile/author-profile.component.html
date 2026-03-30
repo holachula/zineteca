@@ -1,4 +1,4 @@
-<!-- author-profile.component.html -->
+<!-- frontend/src/app/author-panel/pages/author-profile/author-profile.component.html -->
 <!-- author-profile.component.html -->
 
 <h2>Mi Perfil</h2>
@@ -7,19 +7,13 @@
 
   <!-- FOTO DE PERFIL -->
 
-  <h3>Foto de perfil</h3>
+  <h3>Foto mmde perfil</h3>
 
-  <!-- Preview de la imagen actual o seleccionada -->
-  <div *ngIf="previewUrl">
-
-    <!-- 
-    Muestra la imagen seleccionada antes de subirla.
-    previewUrl se genera cuando el usuario selecciona un archivo.
-    -->
+  <div *ngIf=" author?.foto_perfil">
 
     <img
-      [src]="previewUrl"
-      alt="Preview foto perfil"
+      [src]="backendUrl +  author.foto_perfil"
+      alt="Foto perfil"
       style="width:120px;height:120px;border-radius:50%;object-fit:cover"
     >
 
