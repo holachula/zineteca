@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import { AutoresService } from '../../services/autores.service';
-
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-detalle-autor',
   standalone: true,
@@ -54,5 +54,5 @@ export class DetalleAutorComponent implements OnInit {
     if (!comic?.tematicas || !Array.isArray(comic.tematicas)) return '';
     return comic.tematicas.map((t: any) => t.nombre).join(', ');
   }
-
+backendUrl = environment.backendUrl;
 }

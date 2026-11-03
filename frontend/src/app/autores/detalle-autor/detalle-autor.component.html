@@ -7,9 +7,21 @@
   <h1>{{ autor.nombre }}</h1>
 
   <!-- Foto del autor (opcional si existe en la base) -->
-  <div *ngIf="autor.foto_url">
-    <img [src]="autor.foto_url" alt="{{ autor.nombre }}" style="max-width:200px;">
-  </div>
+    <!-- Imagen de perfil -->
+    <div class="autor-imagen">
+      <img 
+        *ngIf="autor.foto_perfil" 
+        [src]="backendUrl +  autor.foto_perfil"
+        [alt]="autor.nombre"
+      />
+
+      <!-- Imagen fallback si no hay foto -->
+      <img 
+        *ngIf="!autor.foto_perfil" 
+        src="/assets/default-avatar.png" 
+        alt="Autor"
+      />
+    </div>
 
   <p>
     <strong>Estado:</strong> {{ autor.estado }}
@@ -26,26 +38,50 @@
 
   <div *ngIf="autor.comics?.length; else noComics">
 
-    <div *ngFor="let comic of autor.comics" class="comic-item">
-      <h3>
-        <a [routerLink]="['/comic', comic.slug]">
-          {{ comic.titulo }}
+    <div class="grid">
+
+        <a
+          *ngFor="let comic of autor.comics"
+          class="card"
+          [routerLink]="['/comic', comic.slug]"
+        >
+
+          <!-- Portada -->
+          <img
+            *ngIf="comic.portada_url"
+            [src]="comic.portada_url"
+            [alt]="comic.titulo"
+            class="cover"
+          />
+
+          <!-- Fallback -->
+          <div *ngIf="!comic.portada_url" class="no-cover">
+            Sin portada
+          </div>
+
+          <h3>{{ comic.titulo }}</h3>
+
+          <p *ngIf="comic.descripcion">
+            {{ comic.descripcion }}
+          </p>
+
+          <small *ngIf="comic.anio">
+            {{ comic.anio }}
+          </small>
+
+          <div *ngIf="comic.generos?.length">
+            <strong>Géneros:</strong>
+            {{ getGeneros(comic) }}
+          </div>
+
+          <div *ngIf="comic.tematicas?.length">
+            <strong>Temáticas:</strong>
+            {{ getTematicas(comic) }}
+          </div>
+
         </a>
-      </h3>
-
-      <div *ngIf="comic.generos?.length">
-        <strong>Géneros:</strong>
-        {{ getGeneros(comic) }}
 
       </div>
-
-      <div *ngIf="comic.tematicas?.length">
-        <strong>Temáticas:</strong>
-       {{ getTematicas(comic) }}
-      </div>
-
-      <hr>
-    </div>
 
   </div>
 

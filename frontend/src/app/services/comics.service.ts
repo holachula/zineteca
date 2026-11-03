@@ -85,5 +85,58 @@ export class ComicsService {
   deleteMyComic(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/author/comics/${id}`);
   }
+/*
+  |--------------------------------------------------------------------------
+  | Obtener todos los autores
+  |--------------------------------------------------------------------------
+  | Incluye sus comics con relaciones
+  |--------------------------------------------------------------------------
+  */
+  getAutores(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/home/autores`);
+  }
 
+  /*
+  |--------------------------------------------------------------------------
+  | Obtener lista de géneros
+  |--------------------------------------------------------------------------
+  | Se usa para llenar el <select> de Género
+  |--------------------------------------------------------------------------
+  */
+  getGeneros(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/home/generos`);
+  }
+
+  /*
+  |--------------------------------------------------------------------------
+  | Obtener lista de temáticas
+  |--------------------------------------------------------------------------
+  | Se usa para llenar el <select> de Temática
+  |--------------------------------------------------------------------------
+  */
+  getTematicas(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/home/tematicas`);
+  }
+
+  /*
+  |--------------------------------------------------------------------------
+  | Obtener estados únicos de autores
+  |--------------------------------------------------------------------------
+  | Se usa para llenar el <select> de Estado
+  |--------------------------------------------------------------------------
+  */
+  getEstados(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/home/estados`);
+  }
+
+  /*
+  |--------------------------------------------------------------------------
+  | Obtener años únicos de publicación
+  |--------------------------------------------------------------------------
+  | Se usa para llenar el <select> de Año
+  |--------------------------------------------------------------------------
+  */
+  getAnios(): Observable<number[]> {
+    return this.http.get<number[]>(`${this.apiUrl}/home/anios`);
+  }
 }

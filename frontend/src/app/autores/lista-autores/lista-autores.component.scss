@@ -1,8 +1,11 @@
-.lista-autores {
-  max-width: 1000px;
+.listado {
+  max-width: 80%;
   margin: auto;
   padding: 20px;
+  background-color: #ffff;
+  border-radius: 8px;
 }
+
 
 .autores-grid {
   display: grid;
@@ -42,4 +45,18 @@
 .volver {
   display: inline-block;
   margin-top: 20px;
+}
+.autor-imagen{
+  border-radius: 140px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    width: 200px;
+    margin: 0px;
+    padding: 0px;
+}
+.autor-imagen img{
+  width: 100%;
 }

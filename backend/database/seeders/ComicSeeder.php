@@ -12,14 +12,16 @@ class ComicSeeder extends Seeder
         // Insert comics
         DB::table('comics')->insert([
             [
-                'titulo' => 'El Viaje Cósmico',
-                'descripcion' => 'Aventura espacial independiente.',
+                'titulo' => 'Bodrio 4',
+                'slug' => 'bodrio-4',
+                'descripcion' => 'Su revista de humor favorita que contiene toda la cochinada gráfica del trazo podrido.',
                 'autor_id' => 1,
                 'portada' => null,
                 'anio' => 2022
             ],
             [
                 'titulo' => 'Risas Urbanas',
+                'slug' => 'el-viaje-cosmico',
                 'descripcion' => 'Cómic humorístico sobre la vida en la ciudad.',
                 'autor_id' => 2,
                 'portada' => null,
@@ -27,6 +29,7 @@ class ComicSeeder extends Seeder
             ],
             [
                 'titulo' => 'Historias del Sur',
+                'slug' => 'el-viaje-cosmico',
                 'descripcion' => 'Cuentos gráficos tradicionales del sur.',
                 'autor_id' => 3,
                 'portada' => null,

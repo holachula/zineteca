@@ -33,3 +33,42 @@ return new class extends Migration
         Schema::dropIfExists('comic_paginas');
     }
 };
+
+
+// DB::table('comic_paginas')->insert([
+//     [
+//         'comic_id' => 2,
+//         'imagen' => 'comics/2/paginas/01.jpg',
+//         'orden' => 1,
+//         'created_at' => now(),
+//         'updated_at' => now(),
+//     ],
+//     [
+//         'comic_id' => 2,
+//         'imagen' => 'comics/2/paginas/02.jpg',
+//         'orden' => 2,
+//         'created_at' => now(),
+//         'updated_at' => now(),
+//     ],
+//     [
+//         'comic_id' => 2,
+//         'imagen' => 'comics/2/paginas/03.jpg',
+//         'orden' => 3,
+//         'created_at' => now(),
+//         'updated_at' => now(),
+//     ],
+//     [
+//         'comic_id' => 2,
+//         'imagen' => 'comics/2/paginas/04.jpg',
+//         'orden' => 4,
+//         'created_at' => now(),
+//         'updated_at' => now(),
+//     ],
+//     [
+//         'comic_id' => 2,
+//         'imagen' => 'comics/2/paginas/05.jpg',
+//         'orden' => 5,
+//         'created_at' => now(),
+//         'updated_at' => now(),
+//     ],
+// ]);

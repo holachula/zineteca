@@ -31,3 +31,15 @@ return new class extends Migration
         Schema::dropIfExists('comics');
     }
 };
+
+
+// DB::table('comics')->insert([
+//     'titulo' => 'Aventuras Incompletas de niñx con sombrero',
+//     'slug' => 'aventuras-incompletas-de-ninx-con-sombrero',
+//     'descripcion' => 'Soy la descripción de Aventuras Incompletas de niñx con sombrero',
+//     'anio' => 2025,
+//     'portada' => 'comics/2/portada.jpg',
+//     'autor_id' => 2,
+//     'created_at' => now(),
+//     'updated_at' => now()
+// ]);

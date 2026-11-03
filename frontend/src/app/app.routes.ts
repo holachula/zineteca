@@ -32,7 +32,8 @@ import { loginRedirectGuard } from './auth/login-redirect.guard';
 // Importar los guards Un Guard es una función que Angular ejecuta antes de permitir que el usuario entre a una ruta.
 import { authGuard } from './auth/auth.guard';
 import { roleGuard } from './auth/role.guard';
-
+// About
+import { AboutComponent } from './about/about.component';
 
 // =====================
 // DEFINICIÓN DE RUTAS
@@ -45,7 +46,7 @@ export const routes: Routes = [
   // =====================
   // Cuando la URL está vacía ( / )
   // Angular muestra el HomeComponent
-  { path: '', component: HomeComponent },
+  { path: '', component: ListaComicsComponent},
 
 
   // =====================
@@ -74,7 +75,8 @@ export const routes: Routes = [
   data: { role: 'admin' }
 },
 
-
+  // AQUÍ AGREGA LA NUEVA RUTA DE ABOUT:
+  { path: 'about', component: AboutComponent },
   // =====================
   // COMICS
   // =====================

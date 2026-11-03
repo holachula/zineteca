@@ -22,7 +22,7 @@
   <!-- ==========================
        TABS / PILLS
        ========================== -->
-  <div class="tabs">
+  <!-- <div class="tabs">
     <button 
       [class.active]="activeTab === 'comics'" 
       (click)="changeTab('comics')">
@@ -34,7 +34,7 @@
       (click)="changeTab('autores')">
       Autores
     </button>
-  </div>
+  </div> -->
 
   <!-- ==========================
        FILTROS
@@ -105,23 +105,23 @@
   <!-- ==========================
        RESULTADOS COMICS
        ========================== -->
-    <div *ngIf="activeTab === 'comics'" class="grid">
+    <!-- <div *ngIf="activeTab === 'comics'" class="grid">
       <a
         *ngFor="let comic of comics"
         class="card"
         [routerLink]="['/comic', comic.slug]"
-      >
+      > -->
 
         <!-- Portada -->
-        <img
+        <!-- <img
           *ngIf="comic.portada_url"
           [src]="comic.portada_url"
           [alt]="comic.titulo"
           class="cover"
-        />
+        /> -->
 
         <!-- Fallback si no hay portada -->
-        <div *ngIf="!comic.portada_url" class="no-cover">
+        <!-- <div *ngIf="!comic.portada_url" class="no-cover">
           Sin portada
         </div>
 
@@ -130,15 +130,15 @@
         <small>{{ comic.anio }}</small>
 
       </a>
-    </div>
+    </div> -->
   <!-- ==========================
        RESULTADOS AUTORES
        ========================== -->
-  <div *ngIf="activeTab === 'autores'" class="grid">
+  <!-- <div *ngIf="activeTab === 'autores'" class="grid">
     <div *ngFor="let autor of autores" class="card">
       <h3>{{ autor.name }}</h3>
       <p>{{ autor.estado }}</p>
     </div>
-  </div>
+  </div> -->
 
 </div>
