@@ -1,1 +1,0 @@
-var t={production:!1,apiUrl:"http://127.0.0.1:8000/api",backendUrl:"http://127.0.0.1:8000/storage/"};export{t as a};
