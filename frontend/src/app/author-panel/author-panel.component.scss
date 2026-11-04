@@ -1,0 +1,26 @@
+/*
+Estilos básicos del layout del panel
+*/
+
+.author-panel {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: #111;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.panel-content {
+  padding: 30px;
+}

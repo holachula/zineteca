@@ -1,0 +1,92 @@
+<div *ngIf="cargando" class="text-center p-5">
+  Cargando información del autor...
+</div>
+
+<div *ngIf="!cargando && autor" class="autor-detalle">
+
+  <h1>{{ autor.nombre }}</h1>
+
+  <!-- Foto del autor (opcional si existe en la base) -->
+    <!-- Imagen de perfil -->
+    <div class="autor-imagen">
+      <img 
+        *ngIf="autor.foto_perfil" 
+        [src]="backendUrl +  autor.foto_perfil"
+        [alt]="autor.nombre"
+      />
+
+      <!-- Imagen fallback si no hay foto -->
+      <img 
+        *ngIf="!autor.foto_perfil" 
+        src="/assets/default-avatar.png" 
+        alt="Autor"
+      />
+    </div>
+
+  <p>
+    <strong>Estado:</strong> {{ autor.estado }}
+  </p>
+
+  <p>
+    <strong>Biografía:</strong><br>
+    {{ autor.bio || 'Este autor aún no tiene biografía.' }}
+  </p>
+
+  <hr>
+
+  <h2>Cómics del Autor</h2>
+
+  <div *ngIf="autor.comics?.length; else noComics">
+
+    <div class="grid">
+
+        <a
+          *ngFor="let comic of autor.comics"
+          class="card"
+          [routerLink]="['/comic', comic.slug]"
+        >
+
+          <!-- Portada -->
+          <img
+            *ngIf="comic.portada_url"
+            [src]="comic.portada_url"
+            [alt]="comic.titulo"
+            class="cover"
+          />
+
+          <!-- Fallback -->
+          <div *ngIf="!comic.portada_url" class="no-cover">
+            Sin portada
+          </div>
+
+          <h3>{{ comic.titulo }}</h3>
+
+          <p *ngIf="comic.descripcion">
+            {{ comic.descripcion }}
+          </p>
+
+          <small *ngIf="comic.anio">
+            {{ comic.anio }}
+          </small>
+
+          <div *ngIf="comic.generos?.length">
+            <strong>Géneros:</strong>
+            {{ getGeneros(comic) }}
+          </div>
+
+          <div *ngIf="comic.tematicas?.length">
+            <strong>Temáticas:</strong>
+            {{ getTematicas(comic) }}
+          </div>
+
+        </a>
+
+      </div>
+
+  </div>
+
+  <ng-template #noComics>
+    <p>Este autor todavía no tiene cómics registrados.</p>
+  </ng-template>
+
+</div>

@@ -1,0 +1,128 @@
+<!-- / src/app/author-panel/detalle-comic-author/detalle-comic-author.component.html -->
+
+<!-- ============================= -->
+<!-- ESTADO DE CARGA -->
+<!-- ============================= -->
+<!-- Se muestra mientras se hace la petición HTTP -->
+<div *ngIf="cargando" class="text-center p-5">
+  Cargando información del cómic...
+</div>
+
+<!-- ============================= -->
+<!-- CONTENIDO PRINCIPAL -->
+<!-- ============================= -->
+<!-- Se renderiza cuando termina la carga y existe el comic -->
+<div *ngIf="!cargando && comic" class="comic-detalle">
+
+ <button [routerLink]="['/panel/autor/comics']" class="btn btn-primary">
+  Volver al panel
+</button>
+
+  <!-- ============================= -->
+  <!-- INFORMACIÓN DEL CÓMIC -->
+  <!-- ============================= -->
+
+
+  <!-- Título del cómic -->
+  <h1 class="titulo">
+    {{ comic.titulo }}
+  </h1>
+
+  <!-- Portada (solo si existe) -->
+  <div *ngIf="comic.portada_url" class="portada-container">
+    <img 
+      [src]="comic.portada_url" 
+      [alt]="comic.titulo"
+      class="portada"
+    >
+  </div>
+
+  <!-- Descripción -->
+  <p class="descripcion">
+    {{ comic.descripcion || 'Sin descripción disponible.' }}
+  </p>
+
+  <hr>
+
+  <!-- ============================= -->
+  <!-- INFORMACIÓN DEL AUTOR -->
+  <!-- ============================= -->
+  <h3>Autor</h3>
+  <p>
+    <!-- Enlace al detalle del autor -->
+    <a [routerLink]="['/autor', comic.autor.slug]">
+      {{ comic.autor.nombre }}
+    </a>
+    <br>
+    Estado: {{ comic.autor.estado }}
+  </p>
+
+  <hr>
+
+  <!-- ============================= -->
+  <!-- GÉNEROS -->
+  <!-- ============================= -->
+  <h3>Géneros</h3>
+
+  <!-- Si existen géneros -->
+  <div *ngIf="comic.generos?.length; else sinGeneros">
+    <span *ngFor="let genero of comic.generos" class="badge">
+      {{ genero.nombre }}
+    </span>
+  </div>
+
+  <!-- Template alternativo si no hay géneros -->
+  <ng-template #sinGeneros>
+    No tiene géneros asignados.
+  </ng-template>
+
+  <hr>
+
+  <!-- ============================= -->
+  <!-- TEMÁTICAS -->
+  <!-- ============================= -->
+  <h3>Temáticas</h3>
+
+  <!-- Si existen temáticas -->
+  <div *ngIf="comic.tematicas?.length; else sinTematicas">
+    <span *ngFor="let tematica of comic.tematicas" class="badge">
+      {{ tematica.nombre }}
+    </span>
+  </div>
+
+  <!-- Template alternativo si no hay temáticas -->
+  <ng-template #sinTematicas>
+    No tiene temáticas asignadas.
+  </ng-template>
+
+  <hr>
+
+  <!-- ===================================================== -->
+  <!-- 🔥 LECTOR VERTICAL TIPO WEBTOON (SCROLL CONTINUO) -->
+  <!-- ===================================================== -->
+
+  <!-- Solo se muestra si el cómic tiene páginas -->
+  <div *ngIf="comic.paginas?.length; else sinPaginas" class="lector-vertical">
+
+    <!-- Recorremos cada página -->
+    <div *ngFor="let pagina of comic.paginas" class="pagina-container">
+
+      <!-- Imagen de cada página -->
+      <!-- loading="lazy" mejora rendimiento -->
+      <img
+        [src]="pagina.imagen_url || pagina.imagen"
+        alt="Página del cómic"
+        class="pagina-img"
+        loading="lazy"
+      >
+
+    </div>
+
+  </div>
+
+  <!-- Si no tiene páginas -->
+  <ng-template #sinPaginas>
+    <p>Este cómic aún no tiene páginas publicadas.</p>
+  </ng-template>
+
+</div>

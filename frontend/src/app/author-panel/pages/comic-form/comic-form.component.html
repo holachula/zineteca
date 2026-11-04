@@ -1,0 +1,29 @@
+<h2>Nuevo cómic</h2>
+
+<form (ngSubmit)="submit()">
+  <label>
+    Título
+    <input
+      type="text"
+      name="titulo"
+      [(ngModel)]="comic.titulo"
+      required
+    />
+  </label>
+
+  <br><br>
+
+  <label>
+    Descripción
+    <textarea
+      name="descripcion"
+      [(ngModel)]="comic.descripcion">
+    </textarea>
+  </label>
+
+  <br><br>
+
+  <button type="submit" [disabled]="saving">
+    {{ saving ? 'Guardando...' : 'Guardar' }}
+  </button>
+</form>
